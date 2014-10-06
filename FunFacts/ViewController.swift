@@ -9,17 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet var funFactLabel: UILabel!
+    @IBOutlet var factButtonForColor: UIButton!
+    let factBook = FactBook()
+    let colorWheel = ColorWheel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        funFactLabel.text = factBook.randomFact()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-
+    
+    @IBAction func showFacts() {
+        var color = colorWheel.randomColor()
+        view.backgroundColor = color
+        factButtonForColor.setTitleColor(color, forState: nil)
+        funFactLabel.text = factBook.randomFact()
+    }
 }
 
